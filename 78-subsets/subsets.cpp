@@ -3,20 +3,20 @@ public:
     vector<vector<int>> subsets(vector<int>& nums) {
         vector<vector<int>> result;
         vector<int> subset;
-
-        backTrack(result,subset,0,nums);
+        backtrack(result,0,subset,nums);
         return result;
     }
-    void backTrack(vector<vector<int>> &result, vector<int> &subset, int index,vector<int> & nums){
 
+    void backtrack(vector<vector<int>>& result,int index, vector<int>& subset, vector<int>& nums ){
         if(index==nums.size()){
             result.push_back(subset);
             return;
         }
+
         subset.push_back(nums[index]);
-        backTrack(result,subset,index+1,nums);
+        backtrack(result,index+1,subset,nums);
 
         subset.pop_back();
-        backTrack(result,subset,index+1,nums);
+        backtrack(result,index+1,subset,nums);
     }
 };
