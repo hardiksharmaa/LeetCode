@@ -14,7 +14,7 @@ public:
                 totalJumps++;
             
             if(coverage>=dest){
-                return totalJumps;
+                break;
             }
         }
         }
