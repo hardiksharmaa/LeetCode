@@ -1,23 +1,19 @@
 class Solution {
 public:
     int jump(vector<int>& nums) {
-        int totalJumps=0;
-        int dest=nums.size()-1;
+        int n=nums.size();
+        int jumps=0;
+        int lastjumpind=0;
         int coverage=0;
-        int lastjumpinx=0;
-        if(nums.size()==1) return 0;
-
-        for(int i=0;i<nums.size();i++){
+        if(n<=1) return 0;
+        for(int i=0;i<n;i++){
             coverage=max(coverage,i+nums[i]);
-            if(i==lastjumpinx){
-                lastjumpinx=coverage;
-                totalJumps++;
-            
-            if(coverage>=dest){
-                break;
+            if(i==lastjumpind){
+                lastjumpind=coverage;
+                jumps++;
             }
+            if(lastjumpind>=n-1) break;
         }
-        }
-        return totalJumps;
+        return jumps;
     }
 };
