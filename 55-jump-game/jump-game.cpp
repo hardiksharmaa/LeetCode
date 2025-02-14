@@ -2,22 +2,13 @@ class Solution {
 public:
     bool canJump(vector<int>& nums) {
         int n=nums.size();
-        int j=nums.size()-2;
-        int dest=nums.size()-1;
-        int i=nums.size()-1;
-
-        while(j>=0){
-            if(nums[j]>=(i-j)){
-                dest=j;
-                i=dest;
-                j--;
-            }
-            else{
-                j--;
-            }
+        int coverage=0;
+        for(int i=0;i<n;i++){
+            if(i>coverage) return false;
+            coverage=max(coverage,i+nums[i]);
+            if(coverage>=n-1) return true;
         }
-        if(dest==0) return true;
-        else return false;
-        
+        return false;
+
     }
 };
