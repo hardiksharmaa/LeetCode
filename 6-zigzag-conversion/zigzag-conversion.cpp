@@ -1,0 +1,19 @@
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        if(numRows==1 || numRows>=s.length()) return s;
+        vector<string> rows(min(numRows,int(s.length())));
+        int currRow=0;
+        bool goingdown=false;
+        for(char c : s){
+            rows[currRow]+=c;
+            if(currRow==0 || currRow==numRows-1) goingdown= !goingdown;
+            currRow+=goingdown ? 1: -1;
+        }
+        string result;
+        for(string row : rows){
+            result+=row;
+        }
+        return result;
+    }
+};
