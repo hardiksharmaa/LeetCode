@@ -11,12 +11,24 @@
  */
 class Solution {
 public:
-    bool valid(TreeNode* node,long minimum,long maximum){
-        if (!node) return true;
-        if (!(node->val > minimum && node->val < maximum)) return false;
-        return valid(node->left, minimum, node->val) && valid(node->right, node->val, maximum);
+    vector<int> a;
+    vector<int> inorder(TreeNode* root){
+        if(root==NULL) return {0};
+        inorder(root->left);
+        a.push_back(root->val);
+        inorder(root->right);
+        return a;
     }
+
     bool isValidBST(TreeNode* root) {
-        return valid(root, LONG_MIN, LONG_MAX);
+        inorder(root);
+        for(int i=1;i<a.size();i++){
+            if(a[i]<a[i-1] || a[i]==a[i-1]){
+                return false;
+                break;
+            }
+            
+        }
+        return true;
     }
 };
