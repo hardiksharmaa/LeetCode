@@ -11,24 +11,18 @@
  */
 class Solution {
 public:
-    vector<int> a;
-    vector<int> inorder(TreeNode* root){
-        if(root==NULL) return {0};
+    bool ans=true;
+    long long prev=LLONG_MIN;
+    void inorder(TreeNode* root){
+        if(root==NULL) return;
         inorder(root->left);
-        a.push_back(root->val);
+        if(prev>=(root->val)) ans=false;
+        prev=root->val;
         inorder(root->right);
-        return a;
     }
 
     bool isValidBST(TreeNode* root) {
         inorder(root);
-        for(int i=1;i<a.size();i++){
-            if(a[i]<a[i-1] || a[i]==a[i-1]){
-                return false;
-                break;
-            }
-            
-        }
-        return true;
+        return ans;
     }
 };
