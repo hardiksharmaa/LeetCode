@@ -1,23 +1,21 @@
 class Solution {
 public:
-    int matchPlayersAndTrainers(std::vector<int>& players, std::vector<int>& trainers) {
-        std::sort(players.begin(), players.end());
-        std::sort(trainers.begin(), trainers.end());
-
-        int count = 0;
-        int i = 0, j = 0; // pointers for players and trainers
-
-        while (i < players.size() && j < trainers.size()) {
-            if (players[i] <= trainers[j]) {
-                // Match found
-                count++;
+    int matchPlayersAndTrainers(vector<int>& players, vector<int>& trainers) {
+        int match=0;
+        sort(players.begin(),players.end());
+        sort(trainers.begin(),trainers.end());
+        int i=0;
+        int j=0;
+        while(i<players.size() && j<trainers.size()){
+            if(players[i]<=trainers[j]){
+                match++;
                 i++;
                 j++;
-            } else {
-                // Try next trainer
+            }
+            else{
                 j++;
             }
         }
-        return count;
+        return match;
     }
 };
