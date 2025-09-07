@@ -8,9 +8,8 @@ public:
                 ans.push_back(i); 
             }
         }
-        if(n%2!=0){//odd
+        else if(n%2!=0){//odd
             for(int i=-n/2;i<=n/2;i++){
-
                 ans.push_back(i); 
             }
         }
