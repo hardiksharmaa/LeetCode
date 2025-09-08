@@ -8,13 +8,12 @@ public:
         return true;
     }
     vector<int> getNoZeroIntegers(int n) {
-        for(int i=1;i<n;i++){
-            int a=i;
-            int b=n-i;
-            if(nonzero(a) && nonzero(b)){
-                return {a,b};
-            }
+        int a=1;
+        int b=n-1;
+        while(!nonzero(a) || !nonzero(b)){
+            a++;
+            b--;
         }
-        return {-1,-1};
+        return {a,b};
     }
 };
