@@ -8,8 +8,8 @@ public:
         int maxi=0;
         string ans="";
         int maxFreq = 0;
-        for (auto& [key, value] : mp) {
-            maxFreq = max(maxFreq, value);
+        for (auto& [key, value]:mp) {
+            maxFreq = max(maxFreq,value);
         }
         vector<vector<char>> bucket(maxFreq + 1);
         for(auto& [key,value]:mp){
