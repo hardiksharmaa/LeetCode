@@ -17,7 +17,7 @@ public:
 
         //     }
         // }
-        // return ans;
+        // return ans; //O(n*klogk)
 
         vector<string> ans;
         unordered_map<char,int> prev;
@@ -40,6 +40,6 @@ public:
                 ans.push_back(y);
             }
         }
-        return ans;
+        return ans;//O(n*k)
     }
 };
