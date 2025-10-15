@@ -43,6 +43,6 @@ public:
             if(func(mid)) ans=mid,low=mid+1;
             else high=mid-1;
         }
-        return ans;//O(logn)
+        return ans;//O(nlogn)
     }
 };
