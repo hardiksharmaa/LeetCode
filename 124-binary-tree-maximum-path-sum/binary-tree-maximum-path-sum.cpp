@@ -11,19 +11,23 @@
  */
 class Solution {
 public:
-    int maxsum(TreeNode* root,int& res){
+    int maxi;
+
+    int func(TreeNode* root){
         if(root==NULL) return 0;
+        int l=func(root->left);
+        int r=func(root->right);
 
-        int left=max(0,maxsum(root->left,res));
-        int right=max(0,maxsum(root->right,res));
+        int koi_ek=max(l,r)+root->val;
+        int both=l+r+root->val;
+        int root_best=root->val;
 
-        res=max(res,left+right+root->val);
-        return root->val+max(left,right);
-
+        maxi=max({maxi,koi_ek, both, root_best});
+        return max(koi_ek, root_best);
     }
     int maxPathSum(TreeNode* root) {
-        int res=root->val;
-        maxsum(root,res);
-        return res;
+        maxi=INT_MIN;
+        func(root);
+        return maxi;
     }
 };
